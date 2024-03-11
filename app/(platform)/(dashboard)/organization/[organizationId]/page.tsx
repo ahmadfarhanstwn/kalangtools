@@ -1,17 +1,17 @@
+import { Separator } from "../../../../../components/ui/separator";
 import { db } from "../../../../../lib/db";
-import { Board } from "./_components/board";
-import { Form } from "./_components/form";
+import { BoardList } from "./_components/board-list";
+import { Info } from "./_components/info";
 
 const OrganizationIdPage = async () => {
     const boards = await db.board.findMany()
 
     return ( 
         <div className="flex flex-col space-y-4">
-            <Form />
-            <div className="space-y-2">
-                {boards.map((board) => (
-                    <Board key={board.id} id={board.id} title={board.title} />
-                ))}
+            <Info />
+            <Separator className="my-4" />
+            <div className="px-2 md:px-4">
+                <BoardList />
             </div>
         </div>
      );
